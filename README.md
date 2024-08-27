@@ -15,7 +15,27 @@ git clone git@github.com:Eclipse135/activityLogService.git .
 ```
 composer install
 ```
-3. Configure your database in `.env`
+3. Configure your database in `.env` or run the one from docker compose
+```
+docker compose up -d database
+```
+if you will use the docker, then assure that you configure the right port for database, since it's dynamic.
+To find the port run
+```
+docker ps
+```
+Or if you already have symfony console installed on your system, then just use 
+```
+symfony console ...
+```
+instead of
+```
+php bin/console ...
+```
+
+You can find how to install symfony console here:
+https://github.com/symfony-cli/symfony-cli
+
 4. Create database (not necessary if already exist)
 ```
 php bin/console doctrine:database:create
