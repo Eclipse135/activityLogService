@@ -4,6 +4,24 @@ This repo is for personal use only and contains a test task - ActivityLogService
 
 ![Fancy image, cuz I can :3](https://i.imgur.com/u2Vmoe3.png)
 
+## How to use
+
+You can log activities by using 3 methods:
+```
+$activityLog->logUserBuysProduct(User $user, Product $product);
+$activityLog->logProductGrantedToUser(User $admin, User $user, Product $product);
+$activityLog->logAdminEditedProduct(User $admin, Product $product);
+```
+
+To get the type title use:
+```
+$activityLog->getActivityType(ActivityLog $activityLog)
+```
+
+To get the message use:
+```
+$activityLog->getActivityMessage(ActivityLog $activityLog)
+```
 
 ## Installation
 
@@ -52,3 +70,4 @@ php bin/console doctrine:fixtures:load
 ```
 symfony serve
 ```
+
