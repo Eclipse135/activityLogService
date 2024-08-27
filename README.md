@@ -24,7 +24,7 @@ To find the port run
 ```
 docker ps
 ```
-Or if you already have symfony console installed on your system, then just use 
+Or if you already have symfony-cli installed on your system, then just use 
 ```
 symfony console ...
 ```
