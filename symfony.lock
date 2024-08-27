@@ -324,6 +324,9 @@
             "config/packages/messenger.yaml"
         ]
     },
+    "symfonycasts/tailwind-bundle": {
+        "version": "v0.6.0"
+    },
     "twig/extra-bundle": {
         "version": "v3.11.0"
     },
