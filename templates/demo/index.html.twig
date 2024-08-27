@@ -3,10 +3,28 @@
 {% block title %}Demo Page of Actions{% endblock %}
 
 {% block body %}
+
+    {% for message in app.flashes('success') %}
+    <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
+        <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
+            <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+                <div class="p-4">
+                    <div class="flex items-start">
+                        <div class="ml-3 w-0 flex-1 pt-0.5">
+                            <p class="text-sm font-medium text-gray-900">Success</p>
+                            <p class="mt-1 text-sm text-gray-500">{{ message }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
     <div class="py-12 bg-gray-400 min-h-screen">
         <div class="mx-auto max-w-7xl px-6 text-center lg:px-8">
             <div class="mx-auto max-w-2xl">
-                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Easy Actions:</h2>
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl underline">Easy Actions:</h2>
             </div>
             <ul role="list"
                 class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-8">
@@ -73,13 +91,13 @@
                                 {% for log in logs %}
                                     <tr>
                                         <td class="whitespace-nowrap py-4 pr-3 text-sm text-white text-left">
-                                            {{ log.date }}
+                                            {{ log.createdAt|date }}
                                         </td>
                                         <td class="whitespace-nowrap px-3 pr-3 text-sm text-white text-left">
-                                            {{ log.type }}
+                                            {{ log.typeTitle }}
                                         </td>
                                         <td class="py-4 px-3 text-sm text-white text-left">
-                                            {{ log.message }}
+                                            {{ log.message|raw }}
                                         </td>
                                     </tr>
                                 {% endfor %}
