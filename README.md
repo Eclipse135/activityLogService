@@ -7,19 +7,19 @@ This repo is for personal use only and contains a test task - ActivityLogService
 ## How to use
 
 You can log activities by using 3 methods:
-```
+```php
 $activityLog->logUserBuysProduct(User $user, Product $product);
 $activityLog->logProductGrantedToUser(User $admin, User $user, Product $product);
 $activityLog->logAdminEditedProduct(User $admin, Product $product);
 ```
 
 To get the type title use:
-```
+```php
 $activityLog->getActivityType(ActivityLog $activityLog)
 ```
 
 To get the message use:
-```
+```php
 $activityLog->getActivityMessage(ActivityLog $activityLog)
 ```
 
