@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Profile of {{ user.name }}
+{% endblock %}
+
+{% block body %}
+    <div class="flex flex-col justify-center items-center min-h-screen max-w-2xl mx-auto text-center">
+        <img
+                src="https://picsum.photos/seed/{{ user.name }}/400"
+                alt="{{ user.name }}"
+                class="rounded-full max-w-64"
+        >
+        <h1 class="text-xl font-medium text-gray-900 mt-6">{{ user.name }}</h1>
+        {% if user.isAdmin %}
+            <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
+        {% endif %}
+    </div>
+{% endblock %}
