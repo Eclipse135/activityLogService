@@ -2,6 +2,8 @@
 
 This repo is for personal use only and contains a test task - ActivityLogService, on Symfony 7 framework
 
+![Fancy image, cuz I can :3](https://i.imgur.com/u2Vmoe3.png)
+
 
 ## Installation
 
