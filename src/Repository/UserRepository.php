@@ -16,6 +16,36 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+    public function findRandom(): User
+    {
+        $result = $this->createQueryBuilder('u')
+            ->select('u.id')
+            ->getQuery()
+            ->getResult();
+
+        $allIds = array_column($result, 'id');
+
+        $randomId = $allIds[array_rand($allIds)];
+
+        return $this->find($randomId);
+    }
+
+    public function findRandomAdmin(): User
+    {
+        $result = $this->createQueryBuilder('u')
+            ->select('u.id')
+            ->andWhere('u.isAdmin = :value')
+            ->setParameter('value', true)
+            ->getQuery()
+            ->getResult();
+
+        $allIds = array_column($result, 'id');
+
+        $randomId = $allIds[array_rand($allIds)];
+
+        return $this->find($randomId);
+    }
+
     //    /**
     //     * @return User[] Returns an array of User objects
     //     */
