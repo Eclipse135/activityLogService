@@ -48,4 +48,7 @@ php bin/console doctrine:migrations:migrate
 ```
 php bin/console doctrine:fixtures:load
 ```
-
+7. Serve the project using Symfony CLI
+```
+symfony serve
+```
