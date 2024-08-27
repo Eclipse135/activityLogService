@@ -45,7 +45,7 @@ class User
         return $this->isAdmin;
     }
 
-    public function setAdmin(bool $isAdmin): static
+    public function setIsAdmin(bool $isAdmin): static
     {
         $this->isAdmin = $isAdmin;
 
