@@ -4,7 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Entity\User;
-use App\Service\ActivityLogService;
+use App\Service\ActivityLogService\ActivityLogService;
+use App\Service\ActivityLogService\Types\UserBuysProduct;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,13 +39,14 @@ class DemoController extends AbstractController
 
         switch ($action) {
             case 'buy_product':
-                $activityLogService->logUserBuysProduct($userRepository->findRandom(), $productRepository->findRandom());
+                $activityLogService->logActivity(new UserBuysProduct(), [
+                    'user' => $userRepository->findRandom(),
+                    'product' => $productRepository->findRandom(),
+                ]);
                 break;
             case 'edit_product':
-                $activityLogService->logAdminEditedProduct($userRepository->findRandomAdmin(), $productRepository->findRandom());
                 break;
             case 'grant_product':
-                $activityLogService->logProductGrantedToUser($userRepository->findRandomAdmin(), $userRepository->findRandom(), $productRepository->findRandom());
                 break;
             default:
                 throw new BadRequestHttpException('Action does not exist!');
