@@ -18,8 +18,8 @@ class ActivityLog
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(enumType: ActivityLogType::class)]
-    private ?ActivityLogType $type = null;
+    #[ORM\Column]
+    private string $type;
 
     #[ORM\Column]
     private array $data = [];
@@ -33,12 +33,12 @@ class ActivityLog
         return $this->id;
     }
 
-    public function getType(): ?ActivityLogType
+    public function getType(): string
     {
         return $this->type;
     }
 
-    public function setType(ActivityLogType $type): static
+    public function setType(string $type): static
     {
         $this->type = $type;
 

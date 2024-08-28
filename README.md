@@ -4,13 +4,28 @@ This repo is for personal use only and contains a test task - ActivityLogService
 
 ![Fancy image, cuz I can :3](https://i.imgur.com/u2Vmoe3.png)
 
-## How to use
+## Information:
+ActivityLogService uses Strategy Pattern approach.
 
-You can log activities by using 3 methods:
+in the Service\ActivityLogService\Types directory you can find 3 example classes:
+- AdminEditedProduct;
+- GrantProductToUserViaAdminPanel;
+- UserBuysProduct;
+
+All those classes implement ActivityLogInterface
+
+## Usage:
+
+The main logic consists in passing as first parameter any class that implements ActivityLogInterface
 ```php
-$activityLog->logUserBuysProduct(User $user, Product $product);
-$activityLog->logProductGrantedToUser(User $admin, User $user, Product $product);
-$activityLog->logAdminEditedProduct(User $admin, Product $product);
+$activityLog->logActivity(ActivityLogInterface $activityLogClass, array $data);
+```
+
+Real examples:
+```php
+$activityLogService->logActivity(new GrantProductToUserViaAdminPanel(), [...]);
+$activityLogService->logActivity(new AdminEditedProduct(), [...]);
+$activityLogService->logActivity(new UserBuysProduct(), [...]);
 ```
 
 To get the type title use:
@@ -22,6 +37,11 @@ To get the message use:
 ```php
 $activityLog->getActivityMessage(ActivityLog $activityLog)
 ```
+
+## Extension:
+In order to extend the functionality of ActivityLogService, implement ActivityLogInterface and it's stubs
+Then just pass this class as first parameter to ActivityLog's logActivity method.
+
 
 ## Installation
 
